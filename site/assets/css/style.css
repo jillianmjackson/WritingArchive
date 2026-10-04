@@ -1,0 +1,299 @@
+:root {
+  --paper: rgb(248, 248, 235);
+  --ink: rgb(22, 22, 16);
+  --green: #153324;
+  --rule: rgba(22, 22, 16, 0.35);
+  --font: "Cousine", "Courier New", monospace;
+  --sidebar: 255px;
+  --gutter: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.53;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--green);
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+/* ---------- layout ---------- */
+
+.page {
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 740px);
+  column-gap: calc(341px - var(--sidebar) - var(--gutter));
+  padding: 56px var(--gutter) 120px;
+}
+
+.masthead {
+  grid-column: 1 / -1;
+  margin-bottom: 42px;
+}
+
+.sidebar {
+  align-self: start;
+  position: sticky;
+  top: 28px;
+}
+
+.content {
+  min-width: 0;
+}
+
+/* ---------- masthead ---------- */
+
+.lamp {
+  position: relative;
+  display: block;
+  width: 107px;
+  height: 146px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.lamp-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.lamp-off {
+  visibility: hidden;
+}
+
+.lamp[aria-pressed="true"] .lamp-on {
+  visibility: hidden;
+}
+
+.lamp[aria-pressed="true"] .lamp-off {
+  visibility: visible;
+}
+
+.site-name {
+  margin: 20px 0 18px;
+  font-size: 16px;
+}
+
+.tabs {
+  display: flex;
+  gap: 7px;
+}
+
+.tab {
+  padding: 11px 12px;
+  border: 1px solid var(--rule);
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.tab:hover {
+  border-color: var(--ink);
+}
+
+.tab.is-active {
+  border-color: var(--ink);
+}
+
+/* ---------- sidebar ---------- */
+
+.sidebar p {
+  margin: 0 0 19px;
+}
+
+.archive-note {
+  margin-top: 30px !important;
+}
+
+.archive-note a {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 23px/1 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.share-link svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.share-link:hover {
+  color: var(--green);
+}
+
+.share-status {
+  font-size: 13px;
+}
+
+/* ---------- essay ---------- */
+
+.piece-title {
+  margin: 0 0 56px;
+  max-width: 987px;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.14;
+}
+
+.piece-prompt {
+  margin: -28px 0 56px;
+  padding-left: 18px;
+  border-left: 1px solid var(--rule);
+  font-style: italic;
+}
+
+.prose p {
+  margin: 0 0 25px;
+}
+
+.prose em,
+.references em {
+  font-style: italic;
+}
+
+.prose a,
+.references a {
+  overflow-wrap: anywhere;
+}
+
+.references {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+}
+
+.references h2 {
+  margin: 0 0 25px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.references p {
+  margin: 0 0 14px;
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+/* ---------- index ---------- */
+
+.index-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.index-list a {
+  display: block;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+}
+
+.index-title {
+  display: block;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.index-list a:hover .index-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.index-meta {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.empty {
+  margin: 0;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 32px;
+  }
+
+  .masthead {
+    margin-bottom: 32px;
+  }
+
+  .sidebar {
+    position: static;
+    margin-bottom: 40px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .piece-title {
+    font-size: 30px;
+    margin-bottom: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lamp:active {
+    transform: translateY(1px);
+  }
+}

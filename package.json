@@ -1,0 +1,10 @@
+{
+  "name": "writing-archive",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "marked": "^18.0.14"
+  }
+}
