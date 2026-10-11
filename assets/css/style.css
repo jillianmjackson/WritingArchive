@@ -3,9 +3,18 @@
   --ink: rgb(22, 22, 16);
   --green: #153324;
   --rule: rgba(22, 22, 16, 0.35);
+  --accent: var(--green);
   --font: "Cousine", "Courier New", monospace;
   --sidebar: 255px;
   --gutter: 18px;
+}
+
+/* Dark mode: switched on by the lamp. */
+html[data-theme="dark"] {
+  --paper: #153324;
+  --ink: rgb(248, 248, 235);
+  --rule: rgba(248, 248, 235, 0.35);
+  --accent: #a9c9b1;
 }
 
 * {
@@ -32,11 +41,11 @@ a {
 }
 
 a:hover {
-  color: var(--green);
+  color: var(--accent);
 }
 
 :focus-visible {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -87,6 +96,11 @@ a:hover {
 
 .lamp-off {
   visibility: hidden;
+}
+
+/* The lamp art is drawn in --green; lighten it so it shows on the dark page. */
+html[data-theme="dark"] .lamp-img {
+  filter: brightness(0) invert(97%) sepia(6%);
 }
 
 .lamp[aria-pressed="true"] .lamp-on {
@@ -172,7 +186,7 @@ a:hover {
 }
 
 .share-link:hover {
-  color: var(--green);
+  color: var(--accent);
 }
 
 .share-status {

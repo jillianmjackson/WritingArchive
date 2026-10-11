@@ -1,4 +1,4 @@
-// Lamp: click to switch between the two lamp images.
+// Lamp: click to switch between the two lamp images and dark mode.
 // The choice is remembered across pages.
 (function () {
   // To add a sound later, drop a file in assets/audio/ and set the path,
@@ -11,7 +11,11 @@
     const root = new URL('../../', document.currentScript?.src || location.href);
     const sound = LAMP_SOUND ? new Audio(new URL(LAMP_SOUND, root)) : null;
 
-    const setSwitched = (on) => lamp.setAttribute('aria-pressed', String(on));
+    const setSwitched = (on) => {
+      lamp.setAttribute('aria-pressed', String(on));
+      if (on) document.documentElement.dataset.theme = 'dark';
+      else delete document.documentElement.dataset.theme;
+    };
 
     try {
       setSwitched(localStorage.getItem(STORAGE_KEY) === 'true');
