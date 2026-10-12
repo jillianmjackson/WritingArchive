@@ -3,7 +3,7 @@
 (function () {
   // To add a sound later, drop a file in assets/audio/ and set the path,
   // relative to the site root, e.g. 'assets/audio/lamp-click.mp3'.
-  const LAMP_SOUND = null;
+  const LAMP_SOUND = 'assets/js/lampsound.mp3';
   const STORAGE_KEY = 'lamp-switched';
 
   const lamp = document.querySelector('.lamp');
@@ -13,6 +13,8 @@
 
     const setSwitched = (on) => {
       lamp.setAttribute('aria-pressed', String(on));
+      lamp.title = on ? 'Turn the lamp on' : 'Turn the lamp off';
+      lamp.setAttribute('aria-label', on ? 'Turn the lamp on (light mode)' : 'Turn the lamp off (dark mode)');
       if (on) document.documentElement.dataset.theme = 'dark';
       else delete document.documentElement.dataset.theme;
     };

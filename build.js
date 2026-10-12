@@ -111,8 +111,7 @@ function layout({ title, activeTab, depth, sidebar, main }) {
   <div class="page">
     <header class="masthead">
       <button class="lamp" type="button" aria-pressed="false" aria-label="Toggle the lamp">
-        <img class="lamp-img lamp-on" src="${up}assets/img/lamp-invert.svg" alt="">
-        <img class="lamp-img lamp-off" src="${up}assets/img/lamp-normal.svg" alt="">
+        <img class="lamp-img" src="${up}assets/img/lamp-normal.svg" alt="">
       </button>
       <p class="site-name">${SITE_NAME}</p>
       <nav class="tabs" aria-label="Categories">

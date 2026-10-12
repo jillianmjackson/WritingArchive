@@ -94,21 +94,41 @@ a:hover {
   object-fit: fill;
 }
 
-.lamp-off {
-  visibility: hidden;
-}
-
 /* The lamp art is drawn in --green; lighten it so it shows on the dark page. */
 html[data-theme="dark"] .lamp-img {
   filter: brightness(0) invert(97%) sepia(6%);
 }
 
-.lamp[aria-pressed="true"] .lamp-on {
-  visibility: hidden;
+/* Glow: light pooling under the shade. Light mode is the lamp switched on,
+   so it glows softly; dark mode is the lamp off, so it only hints on hover. */
+.lamp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(42% 24% at 56% 40%, rgba(255, 200, 90, 0.7), rgba(255, 200, 90, 0));
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
-.lamp[aria-pressed="true"] .lamp-off {
-  visibility: visible;
+/* On the dark page, add light rather than tint. */
+html[data-theme="dark"] .lamp::before {
+  background: radial-gradient(42% 24% at 56% 40%, rgba(255, 212, 128, 0.9), rgba(255, 212, 128, 0));
+  mix-blend-mode: screen;
+}
+
+.lamp:hover::before,
+.lamp:focus-visible::before {
+  opacity: 1;
+}
+
+html[data-theme="dark"] .lamp::before {
+  opacity: 0;
+}
+
+html[data-theme="dark"] .lamp:hover::before,
+html[data-theme="dark"] .lamp:focus-visible::before {
+  opacity: 0.45;
 }
 
 .site-name {
