@@ -99,10 +99,15 @@ function layout({ title, activeTab, depth, sidebar, main }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${up}assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="${up}assets/img/favicon-light.svg">
   <script>
     // Apply dark mode before first paint so pages don't flash light.
     try {
-      if (localStorage.getItem('lamp-switched') === 'true') document.documentElement.dataset.theme = 'dark';
+      if (localStorage.getItem('lamp-switched') === 'true') {
+        document.documentElement.dataset.theme = 'dark';
+        const icon = document.querySelector('link[rel="icon"]');
+        icon.href = icon.href.replace('favicon-light', 'favicon-dark');
+      }
     } catch (_) {}
   </script>
   <script src="${up}assets/js/lamp.js" defer></script>

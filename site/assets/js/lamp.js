@@ -17,6 +17,8 @@
       lamp.setAttribute('aria-label', on ? 'Turn the lamp on (light mode)' : 'Turn the lamp off (dark mode)');
       if (on) document.documentElement.dataset.theme = 'dark';
       else delete document.documentElement.dataset.theme;
+      const icon = document.querySelector('link[rel="icon"]');
+      if (icon) icon.href = icon.href.replace(/favicon-(light|dark)/, on ? 'favicon-dark' : 'favicon-light');
     };
 
     try {
