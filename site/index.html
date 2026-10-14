@@ -1,1 +1,88 @@
-<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=essays.html"><title>jillianis. writing</title><a href="essays.html">Enter the archive</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Essays — jillianis. writing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-light.svg">
+  <script>
+    // Apply dark mode before first paint so pages don't flash light.
+    try {
+      if (localStorage.getItem('lamp-switched') === 'true') {
+        document.documentElement.dataset.theme = 'dark';
+        const icon = document.querySelector('link[rel="icon"]');
+        icon.href = icon.href.replace('favicon-light', 'favicon-dark');
+      }
+    } catch (_) {}
+  </script>
+  <script src="assets/js/lamp.js" defer></script>
+</head>
+<body>
+  <!-- Ink filter for titles: roughened, slightly spread edges and uneven ink,
+       like letterpress on cheap paper. Applied in CSS via filter: url(#ink). -->
+  <svg class="defs" aria-hidden="true">
+    <filter id="ink" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="0.5" result="soft"/>
+      <feComponentTransfer in="soft" result="bled"><feFuncA type="linear" slope="1.8" intercept="-0.25"/></feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="9" result="patches"/>
+      <feColorMatrix in="patches" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.15" result="coverage"/>
+      <feComposite in="bled" in2="coverage" operator="in"/>
+    </filter>
+  </svg>
+  <div class="page">
+    <div class="rail">
+    <header class="masthead">
+      <button class="lamp" type="button" aria-pressed="false" aria-label="Toggle the lamp">
+        <img class="lamp-img" src="assets/img/lamp-normal.svg" alt="">
+      </button>
+      <p class="site-name">jillianis. writing</p>
+      <nav class="tabs" aria-label="Categories">
+        <a class="tab is-active" href="essays.html" aria-current="page">Essays</a>
+        <a class="tab" href="creative.html">Creative</a>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <p>Essays</p>
+      <p>4 pieces</p>
+    </aside>
+    </div>
+
+    <main class="content">
+      <h1 class="piece-title">Essays</h1>
+        <ol class="index-list">
+          <li>
+            <a href="essays/identity-development-in-cyberspace.html">
+              <span class="index-title">Identity Development in Cyberspace</span>
+              <span class="index-meta">2025 · Written in 2025 as a part of the graduate course Critical Approaches to Technology.</span>
+            </a>
+          </li>
+          <li>
+            <a href="essays/aging-with-grace.html">
+              <span class="index-title">Aging With Grace: Successful Aging as Told by Linda Campbell</span>
+              <span class="index-meta">2025 · Written in February 2025 for Anthro 452.</span>
+            </a>
+          </li>
+          <li>
+            <a href="essays/fashion-taste-and-the-culture-industry.html">
+              <span class="index-title">Fashion, Taste, and the Options the Culture Industry Has to Offer</span>
+              <span class="index-meta">Written as a final paper for a film course.</span>
+            </a>
+          </li>
+          <li>
+            <a href="essays/magic-and-religious-beliefs.html">
+              <span class="index-title">Magic and Religious Beliefs: Universalist and Relativist Perspectives</span>
+              <span class="index-meta">Written as the final paper for Cognition &amp; Culture.</span>
+            </a>
+          </li>
+        </ol>
+    </main>
+  </div>
+</body>
+</html>

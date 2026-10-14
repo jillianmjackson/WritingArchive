@@ -221,18 +221,15 @@ copyDir(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
 let count = 0;
 for (const category of CATEGORIES) {
   const pieces = loadCategory(category.key);
-  fs.writeFileSync(path.join(OUT, `${category.key}.html`), indexPage(category, pieces));
+  const page = indexPage(category, pieces);
+  fs.writeFileSync(path.join(OUT, `${category.key}.html`), page);
+  // The first category doubles as the home page.
+  if (category === CATEGORIES[0]) fs.writeFileSync(path.join(OUT, 'index.html'), page);
   if (pieces.length) fs.mkdirSync(path.join(OUT, category.key), { recursive: true });
   for (const piece of pieces) {
     fs.writeFileSync(path.join(OUT, category.key, `${piece.slug}.html`), piecePage(piece, category.label));
     count++;
   }
 }
-
-// Placeholder until the landing page exists.
-fs.writeFileSync(
-  path.join(OUT, 'index.html'),
-  `<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=essays.html"><title>${SITE_NAME}</title><a href="essays.html">Enter the archive</a>\n`
-);
 
 console.log(`Built ${count} pieces into site/`);
