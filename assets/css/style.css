@@ -4,7 +4,8 @@
   --green: #153324;
   --rule: rgba(22, 22, 16, 0.35);
   --accent: var(--green);
-  --font: "Cousine", "Courier New", monospace;
+  --font: "Libre Caslon Text", Georgia, serif;
+  --font-title: "Old Standard TT", Georgia, serif;
   --sidebar: 255px;
   --gutter: 18px;
 }
@@ -25,13 +26,31 @@ html {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.53;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+}
+
+.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Paper texture: a scanned book page multiplied faintly over the light page. */
+html:not([data-theme="dark"]) body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../img/paper-scan.jpg") center / cover no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.06;
+  pointer-events: none;
 }
 
 a {
@@ -138,8 +157,12 @@ html[data-theme="dark"] .lamp:focus-visible::before {
 }
 
 .site-name {
-  margin: 20px 0 18px;
-  font-size: 16px;
+  margin: 18px 0 18px;
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  filter: url(#ink);
 }
 
 .tabs {
@@ -184,7 +207,9 @@ html[data-theme="dark"] .lamp:focus-visible::before {
   margin: 0 0 56px;
   max-width: 987px;
   font-size: 44px;
-  font-weight: 400;
+  font-family: var(--font-title);
+  font-weight: 700;
+  filter: url(#ink);
   line-height: 1.14;
 }
 
@@ -193,6 +218,12 @@ html[data-theme="dark"] .lamp:focus-visible::before {
   padding-left: 18px;
   border-left: 1px solid var(--rule);
   font-style: italic;
+}
+
+/* Keep reading lines to roughly 70 characters. */
+.prose,
+.references {
+  max-width: 36em;
 }
 
 .prose p {
@@ -218,7 +249,7 @@ html[data-theme="dark"] .lamp:focus-visible::before {
 
 .references h2 {
   margin: 0 0 25px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
 }
 

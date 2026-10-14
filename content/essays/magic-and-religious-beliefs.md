@@ -3,7 +3,6 @@ title: "Magic and Religious Beliefs: Universalist and Relativist Perspectives"
 year: ""
 order: 1
 description: "Written as the final paper for Cognition & Culture."
-prompt: "Discuss the relative merits of a universalist and a relativist perspective, in one of the following domains: magic and religious beliefs."
 ---
 
 Magic and religion are domains that have persisted across time in almost all societies. To answer how and why this came to be, discourse is organized around two perspectives, a universalist perspective that attempts to reveal a universal truth that can be applied across all societies during all times, and a relativist perspective that considers the cultural differences and diversity that contextually alter human societies. For magic and religion, a universalist perspective would support the existence of universal cognitive systems that all people intuitively have, whereas a relativist perspective would position the pervasiveness of different forms of magic and religion as culturally independent from eachother. Balancing these two positions and putting them into conversation provide insights into the reasons behind not only the existence of supernatural beliefs but also the evolutionary origins and persistence of these beliefs in contemporary society.

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Magic and Religious Beliefs: Universalist and Relativist Perspectives — Jillian’s Writing Archive</title>
+  <title>Magic and Religious Beliefs: Universalist and Relativist Perspectives — jillianis. writing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon-light.svg">
   <script>
@@ -22,13 +22,26 @@
   <script src="../assets/js/lamp.js" defer></script>
 </head>
 <body>
+  <!-- Ink filter for titles: roughened, slightly spread edges and uneven ink,
+       like letterpress on cheap paper. Applied in CSS via filter: url(#ink). -->
+  <svg class="defs" aria-hidden="true">
+    <filter id="ink" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="0.5" result="soft"/>
+      <feComponentTransfer in="soft" result="bled"><feFuncA type="linear" slope="1.8" intercept="-0.25"/></feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="9" result="patches"/>
+      <feColorMatrix in="patches" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.15" result="coverage"/>
+      <feComposite in="bled" in2="coverage" operator="in"/>
+    </filter>
+  </svg>
   <div class="page">
     <div class="rail">
     <header class="masthead">
       <button class="lamp" type="button" aria-pressed="false" aria-label="Toggle the lamp">
         <img class="lamp-img" src="../assets/img/lamp-normal.svg" alt="">
       </button>
-      <p class="site-name">Jillian’s Writing Archive</p>
+      <p class="site-name">jillianis. writing</p>
       <nav class="tabs" aria-label="Categories">
         <a class="tab is-active" href="../essays.html" aria-current="page">Essays</a>
         <a class="tab" href="../creative.html">Creative</a>
@@ -47,7 +60,7 @@
     <main class="content">
       <article class="piece">
         <h1 class="piece-title">Magic and Religious Beliefs: Universalist and Relativist Perspectives</h1>
-        <p class="piece-prompt">Discuss the relative merits of a universalist and a relativist perspective, in one of the following domains: magic and religious beliefs.</p>
+        
         <div class="prose">
 <p>Magic and religion are domains that have persisted across time in almost all societies. To answer how and why this came to be, discourse is organized around two perspectives, a universalist perspective that attempts to reveal a universal truth that can be applied across all societies during all times, and a relativist perspective that considers the cultural differences and diversity that contextually alter human societies. For magic and religion, a universalist perspective would support the existence of universal cognitive systems that all people intuitively have, whereas a relativist perspective would position the pervasiveness of different forms of magic and religion as culturally independent from eachother. Balancing these two positions and putting them into conversation provide insights into the reasons behind not only the existence of supernatural beliefs but also the evolutionary origins and persistence of these beliefs in contemporary society.</p>
 <p>Research done connecting principles of magic and religion has named the cognitive functions of the contagion system as one area that plays a role in captivating supernatural beliefs. Studies conducted with around 36 American adults on their reaction to contagious scenarios and then purification methods provided insight to this system as well. For cases surrounding what they call “sympathetic magical beliefs”, researchers concluded that “ a case can be made that these are useful heuristics that guide behavior adaptively in at least some domains”. (Nemeroff &amp; Rozin 2002). The case that sympathetic magical beliefs are useful in the way they protect against contagions in the world prior to common knowledge about germs and microbes is useful to appealing to a universalist perspective that situates these cognitive functions as a universally evolved function. However, a relativist position would argue how even the contagions system is culturally responsive based on the environment of the individual. For example, individual variations of contagion sensitivity in levels of religious orthodoxy and cultural norms. According to experiments done with college students, wide ranges of willingness to do certain tasks were observed when students were presented with tasks like drinking apple juice from a bed pan or drinking from a glass that had been stirred with a washed comb. Results from Nemeroff 2002 would position a universalist perspective of magic and religion as a free ride of the intuitive contagion system, especially in terms of moral contagion, but would also address the diversity in applied communities as an important characteristic of a relativist perspective. These contrasting perspectives on contagion roll over to further questions of understanding the cognitive systems that lead to the creation and perpetuation of magic and religious tendencies.</p>

@@ -6,7 +6,7 @@ const { marked } = require('marked');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'site');
-const SITE_NAME = 'Jillian’s Writing Archive';
+const SITE_NAME = 'jillianis. writing';
 
 // Each category is a folder in content/ and a tab in the nav.
 const CATEGORIES = [
@@ -97,7 +97,7 @@ function layout({ title, activeTab, depth, sidebar, main }) {
   <title>${esc(title)}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${up}assets/css/style.css">
   <link rel="icon" type="image/svg+xml" href="${up}assets/img/favicon-light.svg">
   <script>
@@ -113,6 +113,19 @@ function layout({ title, activeTab, depth, sidebar, main }) {
   <script src="${up}assets/js/lamp.js" defer></script>
 </head>
 <body>
+  <!-- Ink filter for titles: roughened, slightly spread edges and uneven ink,
+       like letterpress on cheap paper. Applied in CSS via filter: url(#ink). -->
+  <svg class="defs" aria-hidden="true">
+    <filter id="ink" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="0.5" result="soft"/>
+      <feComponentTransfer in="soft" result="bled"><feFuncA type="linear" slope="1.8" intercept="-0.25"/></feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="9" result="patches"/>
+      <feColorMatrix in="patches" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.15" result="coverage"/>
+      <feComposite in="bled" in2="coverage" operator="in"/>
+    </filter>
+  </svg>
   <div class="page">
     <div class="rail">
     <header class="masthead">
