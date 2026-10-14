@@ -4,6 +4,7 @@
   --green: #153324;
   --rule: rgba(22, 22, 16, 0.35);
   --accent: var(--green);
+  --highlight: rgba(222, 196, 110, 0.38);
   --font: "Libre Caslon Text", Georgia, serif;
   --font-title: "Old Standard TT", Georgia, serif;
   --sidebar: 255px;
@@ -16,6 +17,7 @@ html[data-theme="dark"] {
   --ink: rgb(248, 248, 235);
   --rule: rgba(248, 248, 235, 0.35);
   --accent: #a9c9b1;
+  --highlight: rgba(255, 212, 128, 0.16);
 }
 
 * {
@@ -224,6 +226,13 @@ html[data-theme="dark"] .lamp:focus-visible::before {
 .prose,
 .references {
   max-width: 36em;
+}
+
+/* Quotations: a faint marker stroke under the lower half of the line. */
+.quote {
+  background: linear-gradient(transparent 52%, var(--highlight) 52%, var(--highlight) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .prose p {

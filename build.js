@@ -62,6 +62,14 @@ function renderBody(md) {
   };
 }
 
+// Wrap quotations of 6+ words in a highlight span. A quote may contain inline
+// tags like <em> but never runs across paragraphs.
+function highlightQuotes(html) {
+  return html.replace(/“((?:(?!<\/?p[\s>])[^”])+)”/g, (match, inner) =>
+    inner.replace(/<[^>]+>/g, '').trim().split(/\s+/).length >= 6 ? `<span class="quote">${match}</span>` : match
+  );
+}
+
 function loadCategory(key) {
   const dir = path.join(ROOT, 'content', key);
   if (!fs.existsSync(dir)) return [];
@@ -70,7 +78,9 @@ function loadCategory(key) {
     .filter((f) => f.endsWith('.md'))
     .map((file) => {
       const { data, body } = parseFrontMatter(fs.readFileSync(path.join(dir, file), 'utf8'));
-      return { ...data, slug: file.replace(/\.md$/, ''), category: key, ...renderBody(body) };
+      const rendered = renderBody(body);
+      rendered.body = highlightQuotes(rendered.body);
+      return { ...data, slug: file.replace(/\.md$/, ''), category: key, ...rendered };
     })
     .sort((a, b) => (b.order ?? 0) - (a.order ?? 0));
 }
