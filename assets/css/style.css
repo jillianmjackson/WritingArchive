@@ -59,14 +59,20 @@ a:hover {
 }
 
 .masthead {
-  grid-column: 1 / -1;
   margin-bottom: 42px;
 }
 
-.sidebar {
+.rail {
   align-self: start;
-  position: sticky;
-  top: 28px;
+}
+
+/* Keep the lamp, name, tabs and sidebar in view while reading, as long as
+   the screen is tall enough to show them all. */
+@media (min-height: 640px) {
+  .rail {
+    position: sticky;
+    top: 56px;
+  }
 }
 
 .content {
@@ -172,47 +178,6 @@ html[data-theme="dark"] .lamp:focus-visible::before {
   margin-top: 4px;
 }
 
-.share {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 9px;
-  margin-top: 22px;
-}
-
-.share-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 26px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--ink);
-  font: 23px/1 var(--font);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.share-link svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.share-link:hover {
-  color: var(--accent);
-}
-
-.share-status {
-  font-size: 13px;
-}
-
 /* ---------- essay ---------- */
 
 .piece-title {
@@ -313,8 +278,11 @@ html[data-theme="dark"] .lamp:focus-visible::before {
     margin-bottom: 32px;
   }
 
-  .sidebar {
+  .rail {
     position: static;
+  }
+
+  .sidebar {
     margin-bottom: 40px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--rule);
